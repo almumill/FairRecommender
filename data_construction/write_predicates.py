@@ -2,7 +2,8 @@ import pandas as pd
 import os
 from ratings import ratings_predicate
 from rated import rated_predicate
-
+from sim_users import sim_users_predicate
+from sim_items import sim_items_predicate
 
 def construct_movielens_predicates():
     """
@@ -38,6 +39,8 @@ def construct_movielens_predicates():
 
     ratings_predicate(observed_ratings_df, truth_ratings_df)
     rated_predicate(observed_ratings_df, truth_ratings_df)
+    # sim_users_predicate(user_df)
+    sim_items_predicate(movies_df)
 
 
 def partition_by_timestamp(ratings_df, train_proportion=0.8):
