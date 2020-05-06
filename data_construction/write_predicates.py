@@ -4,6 +4,8 @@ from ratings import ratings_predicate
 from rated import rated_predicate
 from sim_users import sim_users_predicate
 from sim_items import sim_items_predicate
+from avg_item_rating import avg_item_rating_predicate
+from avg_user_rating import avg_user_rating_predicate
 
 def construct_movielens_predicates():
     """
@@ -40,8 +42,9 @@ def construct_movielens_predicates():
     ratings_predicate(observed_ratings_df, truth_ratings_df)
     rated_predicate(observed_ratings_df, truth_ratings_df)
     # sim_users_predicate(user_df)
-    sim_items_predicate(movies_df)
-
+    # sim_items_predicate(movies_df)
+    avg_item_rating_predicate(observed_ratings_df)
+    avg_user_rating_predicate(observed_ratings_df)
 
 def partition_by_timestamp(ratings_df, train_proportion=0.8):
     sorted_frame = ratings_df.sort_values(by='timestamp')
